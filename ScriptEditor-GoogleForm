@@ -1,0 +1,60 @@
+/*
+From the Google Form, go to script editor. Enter this code.
+You will need: 
+  Calendar ID
+  Form ID
+  
+
+
+// Get your calendar id and enter it here:
+var calendar = CalendarApp.getOwnedCalendarById('CALENDAR ID');
+// Get your form id and enter it here:
+var form = FormApp.openById('GOOGLE FORM ID/NOMBOR DALAM LINK TAB BROWSER');
+
+// set FormToCalendar to run on form submit
+function FormToCalendar() {
+  var formResponses = form.getResponses();
+  var lastResponse = formResponses.length - 1; // formResponses is all responses ever, so we only want the latest one.
+  var formData = formResponses[lastResponse];
+  var items = form.getItems();
+  
+  // Copy below line and increment items[] value for each form response (they are in the same order as the form)
+  var eventDescription = formData.getResponseForItem(items[0]).getResponse();
+  var eventDate = new Date(formData.getResponseForItem(items[1]).getResponse());
+  var eventEndDate = new Date(formData.getResponseForItem(items[2]).getResponse());
+  var eventName = formData.getResponseForItem(items[3]).getResponse();
+  
+
+    
+      // Create time-based event
+  
+    if(eventDate.getDay() != eventEndDate.getDay()){
+            var event = calendar.createEvent(
+         eventName, // Event Name
+      new Date(eventDate.setHours(0,0)), 
+    new Date(eventEndDate.setHours(23,59)) 
+    );
+      
+    
+    }
+    else{ 
+      
+    
+    var event = calendar.createAllDayEvent(eventName, new Date(eventDate) );
+
+    }
+  
+
+
+  //event.setDescription(eventDescription);
+  
+  // Create all-day event
+  //var event = calendar.createAllDayEvent(eventName, eventDate);
+  //event.setDescription(eventDescription);
+
+  
+
+  
+}
+
+
