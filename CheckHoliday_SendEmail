@@ -1,3 +1,7 @@
+//semak hari ini tarikh ape? 
+//checkdate() tu untuk dapatkan tarikh hari ini, tarikh semasa
+//Logger.log(checkDate + " is holiday"); ----- untuk dapatkan nilai "tarikh"/ "date" 
+
 function myFunction() { sendEmail();
   var checkDate = new Date(); 
   if( holiday(checkDate) == 1){
@@ -17,14 +21,14 @@ function myFunction() { sendEmail();
 }
 
 function holiday(dateToCheck) {
-  // This function can help check whether the date you enter is public holiday
-  // This is based on Google holiday calander, however, Google does not follow Minstry of Manpower (MOM) published public holiday, 
-  // therefore an exclusion list is created to filter out those holiday not listed in MOM list.
-  // special holiday should not be included, example, polling day
   
-  //var cal = CalendarApp.getCalendarById("en.singapore#holiday@group.v.calendar.google.com");
-  var cal = CalendarApp.getCalendarsByName("IGBIS CALENDAR OFF DAY");
-  // exclusion list of holidays which are not part of MOM published public holiday
+  
+  //var cal = CalendarApp.getCalendarById("letak calendar ID di sini");
+  //var cal = CalendarApp.getCalendarsByName("yang ini pakai nama kalendar");
+  //dua-dua boleh pakai, guna ID atau Nama
+  var cal = CalendarApp.getCalendarsByName("NAMA CALENDAR");
+
+// exclusion list of holidays which are not part of MOM published public holiday
   const nonHolidayArray = ["Christmas Eve","New Year's Eve","Children's Day","Easter Saturday","Easter Sunday"];
   //var holidays = cal.getEventsForDay(dateToCheck);
   var holidays = cal[0].getEventsForDay(dateToCheck);
