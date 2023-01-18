@@ -51,7 +51,7 @@ if (events.length > 0) {
   }
 
 
-MailApp.sendEmail({to: json_data[j].email, cc: 'aminuddin.adnan@igbis.edu.my', subject: "Google Calender - Summary", body, noReply:true} );
+MailApp.sendEmail({to: json_data[j].email, cc: 'emel ape ape', subject: "Google Calender - Summary", body, noReply:true} );
 }
 
 }
